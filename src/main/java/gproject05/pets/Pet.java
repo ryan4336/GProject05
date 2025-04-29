@@ -1,13 +1,21 @@
 package gproject05.pets;
 
 public abstract class Pet {
-	private int id;
-	private String name;
-	private PetType type;
-	private String species;
-	private int age;
-	private boolean isAdopted;
-	
+	protected int id;
+    protected String name;
+    protected String species;
+    protected int age;
+    protected boolean isAdopted;
+
+    public Pet(int id, String name, String species, int age, boolean adopted) {
+        this.id = id;
+        this.name = name;
+        this.species = species;
+        this.age = age;
+        this.isAdopted = adopted;
+    }
+
+    public abstract PetType getType(); 
 	
 	public int getId() {
 		return id;
@@ -20,12 +28,6 @@ public abstract class Pet {
 	}
 	public void setName(String name) {
 		this.name = name;
-	}
-	public PetType getType() {
-		return type;
-	}
-	public void setType(PetType type) {
-		this.type = type;
 	}
 	public String getSpecies() {
 		return species;
@@ -45,11 +47,11 @@ public abstract class Pet {
 	public void setAdopted(boolean isAdopted) {
 		this.isAdopted = isAdopted;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "Pet [id=" + id + ", name=" + name + ", type=" + type + ", species=" + species + ", age=" + age
-				+ ", isAdopted=" + isAdopted + "]";
+		return "Pet [id=" + id + ", name=" + name + ", species=" + species + ", age=" + age + ", isAdopted=" + isAdopted
+				+ "]";
 	}
 	
 	
