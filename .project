@@ -20,16 +20,4 @@
 		<nature>org.eclipse.jdt.core.javanature</nature>
 		<nature>org.eclipse.m2e.core.maven2Nature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>src/main/resources/exotic_animals.json</name>
-			<type>1</type>
-			<location>/Users/ryanhulett/Java/exotic_animals.json</location>
-		</link>
-		<link>
-			<name>src/main/resources/pets.json</name>
-			<type>1</type>
-			<location>/Users/ryanhulett/Java/pets.json</location>
-		</link>
-	</linkedResources>
 </projectDescription>

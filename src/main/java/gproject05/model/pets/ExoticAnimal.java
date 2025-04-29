@@ -1,4 +1,4 @@
-package gproject05.pets;
+package gproject05.model.pets;
 
 public class ExoticAnimal extends Pet{
 	private PetType type = PetType.EXOTIC;
@@ -11,7 +11,5 @@ public class ExoticAnimal extends Pet{
 	public PetType getType() {
 		return type;
 	}
-	
-	
 	
 }

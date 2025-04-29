@@ -1,4 +1,4 @@
-package gproject05.pets;
+package gproject05.model.pets;
 
 public class Dog extends Pet{
 	private PetType type = PetType.DOG;
