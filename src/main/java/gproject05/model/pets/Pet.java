@@ -16,6 +16,14 @@ public abstract class Pet implements Comparable<Pet> {
     }
 
     public abstract PetType getType(); 
+    
+    public boolean adopt() {
+    	if(isAdopted) {
+    		return false;
+    	}
+    	isAdopted = true;
+    	return true;
+    }
 	
 	public int getId() {
 		return id;
@@ -58,4 +66,6 @@ public abstract class Pet implements Comparable<Pet> {
     public int compareTo(Pet other) {
         return this.name.compareToIgnoreCase(other.name);
     }
+	
+	
 }

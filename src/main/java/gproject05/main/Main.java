@@ -9,6 +9,7 @@ import gproject05.model.petloader.ExoticAnimalJson;
 import gproject05.model.petloader.PetLoader;
 import gproject05.model.pets.Pet;
 import gproject05.model.shelter.Shelter;
+import gproject05.model.shelter.ShelterSaver;
 import gproject05.model.comparator.*;
 
 public class Main {
@@ -55,6 +56,9 @@ public class Main {
         for (Pet pet : shelter.getPets()) {
             System.out.println(pet.toString());
         }
+        
+        //save pets to Json file
+        ShelterSaver.savePetsToJson(shelter.getPets());
     }
 
 }
