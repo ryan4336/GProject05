@@ -1,6 +1,6 @@
 package gproject05.model.pets;
 
-public abstract class Pet {
+public abstract class Pet implements Comparable<Pet> {
 	protected int id;
     protected String name;
     protected String species;
@@ -54,5 +54,8 @@ public abstract class Pet {
 				+ "]";
 	}
 	
-	
+	@Override
+    public int compareTo(Pet other) {
+        return this.name.compareToIgnoreCase(other.name);
+    }
 }

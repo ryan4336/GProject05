@@ -6,8 +6,12 @@ import java.util.List;
 import gproject05.model.pets.Pet;
 
 public class Shelter<T extends Pet>{
-	private List<T> pets = new ArrayList<T>();
+	private List<T> pets;
 	
+	public Shelter() {
+		pets = new ArrayList<T>();
+	}
+
 	public void addPets(List<T> petList) {
         for(T pet : petList) {
         	pets.add(pet);
