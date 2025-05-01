@@ -3,7 +3,6 @@ package gproject05.view;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
-
 import gproject05.pets.Pet;
 
 
@@ -15,7 +14,6 @@ public class PetListView extends JFrame {
 	private JButton adoptButton;
 	private JButton viewDetailsButton;
 	private JButton saveButton;
-	private JTextField txtSortBy;
 	private JButton addButton;
 	private JComboBox<String> sortComboBox;
 	
@@ -62,11 +60,9 @@ public class PetListView extends JFrame {
 		sortComboBox.setBounds(377, 307, 105, 27);
 		panel.add(sortComboBox);
 		
-		txtSortBy = new JTextField();
-		txtSortBy.setText("Sort by:");
-		txtSortBy.setBounds(317, 306, 64, 26);
-		panel.add(txtSortBy);
-		txtSortBy.setColumns(10);
+		JLabel lblNewLabel = new JLabel("Sort by:");
+		lblNewLabel.setBounds(328, 311, 61, 16);
+		panel.add(lblNewLabel);
 	}
 
 
@@ -93,7 +89,6 @@ public class PetListView extends JFrame {
 	
 	public void addActionListenerToViewDetailsButton(ActionListener listener) {
 		viewDetailsButton.addActionListener(listener);
-		
 	}
 
 	public void addActionListenerToSortComboBox(ActionListener listener) {
@@ -104,5 +99,7 @@ public class PetListView extends JFrame {
 		saveButton.addActionListener(listener);
 	}
 
-	
+	public void addActionListenerToAddButton(ActionListener listener) {
+		addButton.addActionListener(listener);
+	}
 }
