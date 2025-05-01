@@ -17,19 +17,32 @@ import gproject05.petloader.PetLoader;
 import gproject05.pets.Cat;
 import gproject05.pets.Dog;
 import gproject05.pets.Pet;
-import gproject05.pets.PetType;
 import gproject05.pets.Rabbit;
 import gproject05.shelter.Shelter;
 import gproject05.shelter.ShelterSaver;
 import gproject05.view.PetInputView;
 import gproject05.view.PetListView;
 import gproject05.comparator.*;
-
+/**
+ * The controller class that manages interactions between the PetListView,
+ * PetListModel, and other components of the Pet Management application.
+ * <p>
+ * This class handles user actions such as removing pets, adopting pets, viewing pet details,
+ * sorting the pet list, adding new pets, and saving the pet list to a file.
+ * </p>
+ */
 public class PetController {
 	private PetListView petListView;
 	private PetListModel petListModel;
 	private PetInputView petInputView;
-	
+	/**
+     * Constructs a PetController that initializes the view and model,
+     * sets up event listeners, and loads the initial data for the pet shelter.
+     *
+     * @param view the PetListView to be controlled
+     * @param model the PetListModel to store the pet data
+     * @throws FileNotFoundException if a required file cannot be found during initialization
+     */
 	public PetController(PetListView view, PetListModel model) throws FileNotFoundException {
 		this.petListView = view;
 		this.petListModel = model;
@@ -51,11 +64,18 @@ public class PetController {
 		
 	}
 	
-	
+	/**
+     * Displays the pet list view to the user.
+     */
 	public void initiate() {
 		petListView.setVisible(true);
 	}
-	
+	/**
+     * Initializes the shelter by loading standard and exotic pets, then sorts them.
+     *
+     * @return a Shelter containing the pets
+     * @throws FileNotFoundException if any required files for loading pets cannot be found
+     */
 	public Shelter<Pet> initShelter() throws FileNotFoundException {
 		Shelter<Pet> shelter = new Shelter<>();
 		List<Pet> standardPets = PetLoader.loadStandardPets();
@@ -68,9 +88,15 @@ public class PetController {
         
         return shelter;
 	}
-	
+	/**
+     * The action listener for removing a selected pet from the pet list.
+     */
 	private class RemovePetButtonActionListener implements ActionListener {
-		
+		/**
+         * Removes the selected pet from the list. If no pet is selected, a message is displayed.
+         *
+         * @param e the action event triggered by clicking the remove pet button
+         */
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			int selectedPetIndex = petListView.getSelectedPet();
@@ -83,9 +109,17 @@ public class PetController {
 			
 		}
 	}
-	
+	/**
+     * The action listener for adopting a selected pet.
+     * Ensures the pet is not already adopted before updating its status.
+     */
 	private class AdoptPetButtonActionListener implements ActionListener {
-
+		/**
+         * Adopts the selected pet if it is not already adopted. If no pet is selected, or the pet is already adopted,
+         * an error message is displayed.
+         *
+         * @param e the action event triggered by clicking the adopt pet button
+         */
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			int selectedPetIndex = petListView.getSelectedPet();
@@ -111,9 +145,16 @@ public class PetController {
 			        JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
-	
+	/**
+     * The action listener for viewing the details of a selected pet.
+     * Displays pet details in a message dialog.
+     */
 	private class ViewDetailsButtonActionListener implements ActionListener {
-
+		/**
+         * Displays the details of the selected pet. If no pet is selected, a message is displayed.
+         *
+         * @param e the action event triggered by clicking the view details button
+         */
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			int index = petListView.getSelectedPet();
@@ -132,9 +173,17 @@ public class PetController {
 		    JOptionPane.showMessageDialog(null, details, "Pet Details", JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
-	
+	/**
+     * The action listener for sorting pets based on selected criteria from a combo box.
+     * Supports sorting by Name, Species, or Age.
+     */
 	private class SortComboBoxActionListener implements ActionListener {
-
+		/**
+         * Sorts the pet list based on the selected criterion from the combo box.
+         * It updates both the view and the model.
+         *
+         * @param e the action event triggered by selecting a sorting criterion from the combo box
+         */
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			String selected = (String) petListView.getSelectedItemFromComboBox();
@@ -201,9 +250,15 @@ public class PetController {
 	        }
 		}
 	}
-	
+	/**
+     * The action listener for saving the pet list to a file.
+     */
 	private class SaveButtonActionListener implements ActionListener {
-
+		/**
+         * Saves the current pet list to a JSON file and displays a success message.
+         *
+         * @param e the action event triggered by clicking the save button
+         */
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			ShelterSaver.savePetsToJson(petListModel.getPetList());
@@ -214,17 +269,31 @@ public class PetController {
 		}
 		
 	}
-	
+	/**
+     * The action listener for opening the pet input form to add a new pet.
+     */
 	private class AddButtonActionListener implements ActionListener {
-
+		/**
+         * Displays the pet input form to the user.
+         *
+         * @param e the action event triggered by clicking the add button
+         */
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			petInputView.setVisible(true);
 		}
 	}
-	
+	/**
+     * The action listener for submitting a new pet's information.
+     * Validates inputs and adds a new pet to the list if valid.
+     */
 	private class SubmitPetButtonActionListener implements ActionListener {
-
+		/**
+         * Validates the inputs for the new pet, creates a new Pet, and adds it to the list.
+         * Displays error messages if validation fails.
+         *
+         * @param e the action event triggered by clicking the submit button on the pet input form
+         */
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			String newPetName = petInputView.getPetName();

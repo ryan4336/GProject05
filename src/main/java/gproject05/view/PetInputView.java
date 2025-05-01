@@ -9,7 +9,13 @@ import javax.swing.JLabel;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-
+/**
+ * A graphical user interface (GUI) for inputting pet information.
+ * <p>
+ * This class represents a window that allows users to input pet information such as name, type, age, and species. 
+ * It provides text fields for user input and a submit button to capture the entered data.
+ * </p>
+ */
 @SuppressWarnings("serial")
 public class PetInputView extends JFrame{
 	private JPanel panel;
@@ -71,38 +77,64 @@ public class PetInputView extends JFrame{
 		
 		setVisible(false);
 	}
-	
+	/**
+     * Retrieves the entered pet name.
+     *
+     * @return The pet name entered by the user.
+     */
 	public String getPetName() {
 		return petNameTextField.getText();
 	}
-	
+	/**
+     * Retrieves the entered pet type.
+     *
+     * @return The pet type entered by the user.
+     */
 	public String getPetType() {
 		return petTypeTextField.getText();
 	}
-	
+	/**
+     * Retrieves the entered pet age.
+     *
+     * @return The pet age entered by the user.
+     */
 	public String getPetAge() {
 		return petAgeTextField.getText();
 	}
-	
+	/**
+     * Retrieves the entered pet species.
+     *
+     * @return The pet species entered by the user.
+     */
 	public String getPetSpecies() {
 		return petSpeciesTextField.getText();
 	}
-	
+	/**
+     * Resets the pet type text field.
+     */
 	public void resetPetTypeTextField() {
 		petTypeTextField.setText("");
 	}
-
+	/**
+     * Resets the pet age text field.
+     */
 	public void resetPetAgeTextField() {
 		petAgeTextField.setText("");
 	}
-
+	/**
+     * Resets all input text fields.
+     */
 	public void resetTextFields() {
 		petNameTextField.setText("");
 		petSpeciesTextField.setText("");
 		petAgeTextField.setText("");
 		petTypeTextField.setText("");
 	}
-
+	/**
+     * Adds an action listener to the submit button.
+     *
+     * @param listener The action listener to be added to the submit button.
+     */
 	public void addActionListenerToSubmitButton(ActionListener listener) {
 		submitButton.addActionListener(listener);
 	}

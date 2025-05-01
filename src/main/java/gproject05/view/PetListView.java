@@ -5,7 +5,14 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import gproject05.pets.Pet;
 
-
+/**
+ * A graphical user interface (GUI) for displaying a list of pets.
+ * <p>
+ * This class represents a window that displays a list of pets in a JList component. 
+ * It allows users to interact with the pet list by removing, adopting, viewing details, 
+ * sorting, and saving pets. Additionally, users can add new pets through a button.
+ * </p>
+ */
 @SuppressWarnings("serial")
 public class PetListView extends JFrame {
 	private JPanel panel;
@@ -17,7 +24,13 @@ public class PetListView extends JFrame {
 	private JButton addButton;
 	private JComboBox<String> sortComboBox;
 	
-	
+	/**
+     * Constructs a new PetListView.
+     * <p>
+     * Initializes the GUI components including the pet list, buttons for various actions, 
+     * and a combo box for sorting the pet list.
+     * </p>
+     */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public PetListView() {
 		setTitle("Pet List Page");
@@ -66,39 +79,75 @@ public class PetListView extends JFrame {
 	}
 
 
-	
+	/**
+     * Retrieves the model of the pet list.
+     *
+     * @return The DefaultListModel representing the list of pets.
+     */
 	public DefaultListModel<Pet> getList() {
 		return (DefaultListModel<Pet>) list.getModel();
 	}
-	
+	/**
+     * Retrieves the index of the currently selected pet in the list.
+     *
+     * @return The index of the selected pet, or -1 if no pet is selected.
+     */
 	public int getSelectedPet() {
 		return list.getSelectedIndex();
 	}
-	
+	/**
+     * Retrieves the selected sort option from the combo box.
+     *
+     * @return The selected sorting option (e.g., "Name", "Species", "Age").
+     */
 	public String getSelectedItemFromComboBox() {
 		return (String) sortComboBox.getSelectedItem();
 	}
-
+	/**
+     * Adds an action listener to the "Remove Pet" button.
+     *
+     * @param listener The action listener to be added to the remove button.
+     */
 	public void addActionListenerToRemovePetButton(ActionListener listener) {
 		removeButton.addActionListener(listener);
 	}
-	
+	/**
+     * Adds an action listener to the "Adopt Pet" button.
+     *
+     * @param listener The action listener to be added to the adopt button.
+     */
 	public void addActionListenerToAdoptButton(ActionListener listener) {
 		adoptButton.addActionListener(listener);
 	}
-	
+	/**
+     * Adds an action listener to the "View Details" button.
+     *
+     * @param listener The action listener to be added to the view details button.
+     */
 	public void addActionListenerToViewDetailsButton(ActionListener listener) {
 		viewDetailsButton.addActionListener(listener);
 	}
-
+	/**
+     * Adds an action listener to the sort combo box.
+     *
+     * @param listener The action listener to be added to the sort combo box.
+     */
 	public void addActionListenerToSortComboBox(ActionListener listener) {
 		sortComboBox.addActionListener(listener);
 	}
-
+	/**
+     * Adds an action listener to the "Save" button.
+     *
+     * @param listener The action listener to be added to the save button.
+     */
 	public void addActionListenerToSaveButton(ActionListener listener) {
 		saveButton.addActionListener(listener);
 	}
-
+	/**
+     * Adds an action listener to the "Add Pet" button.
+     *
+     * @param listener The action listener to be added to the add pet button.
+     */
 	public void addActionListenerToAddButton(ActionListener listener) {
 		addButton.addActionListener(listener);
 	}
