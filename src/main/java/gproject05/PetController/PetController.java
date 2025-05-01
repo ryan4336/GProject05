@@ -5,6 +5,9 @@ import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.util.List;
 
+import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
+
 import gproject05.model.PetListModel;
 import gproject05.petloader.ExoticAnimalAdapter;
 import gproject05.petloader.ExoticAnimalJson;
@@ -21,7 +24,7 @@ public class PetController {
 		this.petListView = view;
 		this.petListModel = model;
 		this.petListView.addActionListenerToRemovePetButton(new RemovePetButtonActionListener());
-		
+		this.petListView.addActionListenerToAdoptButton(new AdoptPetButtonActionListener());
 		//initialize shelter and import pets, send PetList to model and view
 		Shelter<Pet> shelter = initShelter();
 		model.setPetList(shelter.getPetList());
@@ -51,9 +54,31 @@ public class PetController {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			int selectedUser = petListView.getSelectedUser();
-			petListView.getList().remove(selectedUser);
-			petListModel.getPetList().remove(selectedUser);
+			int selectedPet = petListView.getSelectedPet();
+			petListView.getList().remove(selectedPet);
+			petListModel.getPetList().remove(selectedPet);
+			
+		}
+		
+	}
+	
+	private class AdoptPetButtonActionListener implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			int selectedPetIndex = petListView.getSelectedPet();
+			Pet pet = petListModel.getPetList().get(selectedPetIndex);
+			
+			if(pet.isAdopted()) {
+				JOptionPane.showMessageDialog(null,
+			            "This pet has already been adopted.",
+			            "Action Not Allowed",
+			            JOptionPane.ERROR_MESSAGE);
+			        return;
+			}
+			petListView.getList().get(selectedPetIndex).setAdopted(true);
+			petListModel.getPetList().get(selectedPetIndex).setAdopted(true);
+			petListView.getList().setElementAt(pet, selectedPetIndex);
 			
 		}
 		

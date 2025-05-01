@@ -3,6 +3,7 @@ package gproject05.view;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
+
 import gproject05.pets.Pet;
 
 
@@ -71,12 +72,17 @@ public class PetListView extends JFrame {
 		return (DefaultListModel<Pet>) list.getModel();
 	}
 	
-	public int getSelectedUser() {
+	public int getSelectedPet() {
 		return list.getSelectedIndex();
 	}
 
 	public void addActionListenerToRemovePetButton(ActionListener listener) {
 		removeButton.addActionListener(listener);
+	}
+	
+	public void addActionListenerToAdoptButton(ActionListener listener) {
+		adoptButton.addActionListener(listener);
+		
 	}
 	
 }
