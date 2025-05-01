@@ -87,6 +87,21 @@ public class PetInputView extends JFrame{
 	public String getPetSpecies() {
 		return petSpeciesTextField.getText();
 	}
+	
+	public void resetPetTypeTextField() {
+		petTypeTextField.setText("");
+	}
+
+	public void resetPetAgeTextField() {
+		petAgeTextField.setText("");
+	}
+
+	public void resetTextFields() {
+		petNameTextField.setText("");
+		petSpeciesTextField.setText("");
+		petAgeTextField.setText("");
+		petTypeTextField.setText("");
+	}
 
 	public void addActionListenerToSubmitButton(ActionListener listener) {
 		submitButton.addActionListener(listener);

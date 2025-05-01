@@ -251,6 +251,7 @@ public class PetController {
 			            "Age must be a positive, non-zero number.",
 			            "Input Error",
 			            JOptionPane.ERROR_MESSAGE);
+			        petInputView.resetPetAgeTextField();
 			        return;
 			    }
 			}catch(NumberFormatException n) {
@@ -258,6 +259,7 @@ public class PetController {
 			            "Please enter a valid number for age.",
 			            "Input Error",
 			            JOptionPane.ERROR_MESSAGE);
+			    petInputView.resetPetAgeTextField();
 				return;
 			}
 			
@@ -276,10 +278,13 @@ public class PetController {
 				            "Please enter a valid pet type.",
 				            "Input Error",
 				            JOptionPane.ERROR_MESSAGE);
+					petInputView.resetPetTypeTextField();
 					return;
 			}
+			
 			petListView.getList().addElement(newPet);
 			petListModel.getPetList().add(newPet);
+			petInputView.resetTextFields();
 			
 			//sort list by name to accommodate new element
 			DefaultListModel<Pet> model = petListView.getList();
