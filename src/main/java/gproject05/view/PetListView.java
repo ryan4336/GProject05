@@ -16,6 +16,7 @@ public class PetListView extends JFrame {
 	private JButton saveButton;
 	private JTextField txtSortBy;
 	private JButton addButton;
+	private JComboBox sortComboBox;
 	
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
@@ -54,10 +55,10 @@ public class PetListView extends JFrame {
 		saveButton.setBounds(377, 337, 117, 29);
 		panel.add(saveButton);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Name", "Species", "Age"}));
-		comboBox.setBounds(377, 307, 105, 27);
-		panel.add(comboBox);
+		sortComboBox = new JComboBox();
+		sortComboBox.setModel(new DefaultComboBoxModel(new String[] {"Name", "Species", "Age"}));
+		sortComboBox.setBounds(377, 307, 105, 27);
+		panel.add(sortComboBox);
 		
 		txtSortBy = new JTextField();
 		txtSortBy.setText("Sort by:");
@@ -90,6 +91,19 @@ public class PetListView extends JFrame {
 		viewDetailsButton.addActionListener(listener);
 		
 	}
+
+	public void addActionListenerToSortComboBox(ActionListener listener) {
+		sortComboBox.addActionListener(listener);
+	}
+
+	public String getSelectedItemFromComboBox() {
+		return (String) sortComboBox.getSelectedItem();
+		
+	}
+
+
+
+	
 	
 	
 	
