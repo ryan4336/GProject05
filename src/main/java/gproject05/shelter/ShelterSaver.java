@@ -24,7 +24,6 @@ public class ShelterSaver {
 
         try (FileWriter writer = new FileWriter(fileName)) {
             gson.toJson(pets, writer);
-            System.out.println("\nPets saved to file: " + fileName);
         } catch (IOException e) {
             e.printStackTrace();
         }

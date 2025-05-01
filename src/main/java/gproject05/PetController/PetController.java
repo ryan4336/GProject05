@@ -16,6 +16,7 @@ import gproject05.petloader.ExoticAnimalJson;
 import gproject05.petloader.PetLoader;
 import gproject05.pets.Pet;
 import gproject05.shelter.Shelter;
+import gproject05.shelter.ShelterSaver;
 import gproject05.view.PetListView;
 import gproject05.comparator.*;
 
@@ -30,11 +31,11 @@ public class PetController {
 		this.petListView.addActionListenerToAdoptButton(new AdoptPetButtonActionListener());
 		this.petListView.addActionListenerToViewDetailsButton(new ViewDetailsButtonActionListener());
 		this.petListView.addActionListenerToSortComboBox(new SortComboBoxActionListener());
+		this.petListView.addActionListenerToSaveButton(new SaveButtonActionListener());
 		
 		
 		//initialize shelter and import pets, send PetList to model and view
 		Shelter<Pet> shelter = initShelter();
-		shelter.sortPetsDefault();
 		model.setPetList(shelter.getPetList());
 		for(Pet pet : shelter.getPetList()) {
 			view.getList().addElement(pet);
@@ -55,17 +56,22 @@ public class PetController {
         List<ExoticAnimalJson> exoticJsonList = PetLoader.loadExoticPets();
         List<Pet> adaptedExoticPets = ExoticAnimalAdapter.adaptJsonList(exoticJsonList);
         shelter.addPets(adaptedExoticPets);
+        shelter.sortPetsDefault();
         
         return shelter;
 	}
 	
 	private class RemovePetButtonActionListener implements ActionListener {
-
+		
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			int selectedPet = petListView.getSelectedPet();
-			petListView.getList().remove(selectedPet);
-			petListModel.getPetList().remove(selectedPet);
+			int selectedPetIndex = petListView.getSelectedPet();
+			if (selectedPetIndex == -1) {
+		        JOptionPane.showMessageDialog(null, "Please select a pet first.");
+		        return;
+		    }
+			petListView.getList().remove(selectedPetIndex);
+			petListModel.getPetList().remove(selectedPetIndex);
 			
 		}
 	}
@@ -75,6 +81,10 @@ public class PetController {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			int selectedPetIndex = petListView.getSelectedPet();
+			if (selectedPetIndex == -1) {
+		        JOptionPane.showMessageDialog(null, "Please select a pet first.");
+		        return;
+		    }
 			Pet pet = petListModel.getPetList().get(selectedPetIndex);
 			
 			if(pet.isAdopted()) {
@@ -87,7 +97,10 @@ public class PetController {
 			petListView.getList().get(selectedPetIndex).setAdopted(true);
 			petListModel.getPetList().get(selectedPetIndex).setAdopted(true);
 			petListView.getList().setElementAt(pet, selectedPetIndex);
-			
+			JOptionPane.showMessageDialog(null,
+			        pet.getName() + " adopted successfully!",
+			        "Success",
+			        JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
 	
@@ -110,7 +123,6 @@ public class PetController {
 
 		    JOptionPane.showMessageDialog(null, details, "Pet Details", JOptionPane.INFORMATION_MESSAGE);
 		}
-		
 	}
 	
 	private class SortComboBoxActionListener implements ActionListener {
@@ -179,8 +191,18 @@ public class PetController {
 	        		
 	        		return;
 	        }
-			
-			
+		}
+	}
+	
+	private class SaveButtonActionListener implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			ShelterSaver.savePetsToJson(petListModel.getPetList());
+			JOptionPane.showMessageDialog(null,
+			        "Pets saved successfully!",
+			        "Success",
+			        JOptionPane.INFORMATION_MESSAGE);
 		}
 		
 	}
