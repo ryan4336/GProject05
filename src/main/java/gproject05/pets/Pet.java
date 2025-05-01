@@ -58,7 +58,7 @@ public abstract class Pet implements Comparable<Pet> {
 
 	@Override
 	public String toString() {
-		return "Pet ID: " + id + ", Name: " + name + ", Species: " + species + ", Age: " + age + ", Adopted: " + isAdopted;
+		return name + "; " + species + ", " + age + " years old.";
 	}
 	
 	@Override

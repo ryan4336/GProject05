@@ -3,7 +3,6 @@ package gproject05.view;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
-
 import gproject05.pets.Pet;
 
 
@@ -16,6 +15,7 @@ public class PetListView extends JFrame {
 	private JButton viewDetailsButton;
 	private JButton saveButton;
 	private JTextField txtSortBy;
+	private JButton addButton;
 	
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
@@ -28,15 +28,15 @@ public class PetListView extends JFrame {
 		setContentPane(panel);
 		getContentPane().setLayout(null);
 		
-		JButton btnNewButton = new JButton("Add Pet");
-		btnNewButton.setBounds(6, 306, 100, 29);
-		panel.add(btnNewButton);
-		
 		DefaultListModel<Pet> modelList = new DefaultListModel<Pet>();
 		list = new JList<Pet>(modelList);
 		
 		list.setBounds(6, 6, 488, 288);
 		panel.add(list);
+		
+		addButton = new JButton("Add Pet");
+		addButton.setBounds(6, 306, 100, 29);
+		panel.add(addButton);
 		
 		removeButton = new JButton("Remove Pet");
 		removeButton.setBounds(6, 337, 100, 29);
@@ -64,6 +64,7 @@ public class PetListView extends JFrame {
 		txtSortBy.setBounds(317, 306, 64, 26);
 		panel.add(txtSortBy);
 		txtSortBy.setColumns(10);
+		
 	}
 
 
@@ -84,5 +85,12 @@ public class PetListView extends JFrame {
 		adoptButton.addActionListener(listener);
 		
 	}
+	
+	public void addActionListenerToViewDetailsButton(ActionListener listener) {
+		viewDetailsButton.addActionListener(listener);
+		
+	}
+	
+	
 	
 }

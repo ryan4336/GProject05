@@ -5,7 +5,6 @@ import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.util.List;
 
-import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
 import gproject05.model.PetListModel;
@@ -25,6 +24,7 @@ public class PetController {
 		this.petListModel = model;
 		this.petListView.addActionListenerToRemovePetButton(new RemovePetButtonActionListener());
 		this.petListView.addActionListenerToAdoptButton(new AdoptPetButtonActionListener());
+		this.petListView.addActionListenerToViewDetailsButton(new ViewDetailsButtonActionListener());
 		//initialize shelter and import pets, send PetList to model and view
 		Shelter<Pet> shelter = initShelter();
 		model.setPetList(shelter.getPetList());
@@ -59,7 +59,6 @@ public class PetController {
 			petListModel.getPetList().remove(selectedPet);
 			
 		}
-		
 	}
 	
 	private class AdoptPetButtonActionListener implements ActionListener {
@@ -81,8 +80,31 @@ public class PetController {
 			petListView.getList().setElementAt(pet, selectedPetIndex);
 			
 		}
+	}
+	
+	private class ViewDetailsButtonActionListener implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			int index = petListView.getSelectedPet();
+		    if (index == -1) {
+		        JOptionPane.showMessageDialog(null, "Please select a pet first.");
+		        return;
+		    }
+
+		    Pet selectedPet = petListModel.getPetList().get(index);
+		    String details = "ID: " + selectedPet.getId() +
+		    				 "\nName: " + selectedPet.getName() +
+		                     "\nType: " + selectedPet.getType() +
+		                     "\nAge: " + selectedPet.getAge() +
+		                     "\nAdopted: " + (selectedPet.isAdopted() ? "Yes" : "No");
+
+		    JOptionPane.showMessageDialog(null, details, "Pet Details", JOptionPane.INFORMATION_MESSAGE);
+		}
 		
 	}
+	
+	
 	
 }
 
