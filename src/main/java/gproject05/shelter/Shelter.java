@@ -22,7 +22,7 @@ public class Shelter<T extends Pet>{
         pets.add(pet);
     }
 
-    public List<T> getPets() {
+    public List<T> getPetList() {
         return pets;
     }
 
