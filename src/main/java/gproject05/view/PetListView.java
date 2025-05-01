@@ -1,7 +1,8 @@
 package gproject05.view;
 
-import javax.swing.*;
+import java.awt.event.ActionListener;
 
+import javax.swing.*;
 import gproject05.pets.Pet;
 
 
@@ -9,10 +10,10 @@ import gproject05.pets.Pet;
 public class PetListView extends JFrame {
 	private JPanel panel;
 	private JList<Pet> list;
-	private JButton btnNewButton_1;
-	private JButton btnNewButton_2;
-	private JButton btnNewButton_3;
-	private JButton btnNewButton_4;
+	private JButton removeButton;
+	private JButton adoptButton;
+	private JButton viewDetailsButton;
+	private JButton saveButton;
 	private JTextField txtSortBy;
 	
 	
@@ -36,21 +37,21 @@ public class PetListView extends JFrame {
 		list.setBounds(6, 6, 488, 288);
 		panel.add(list);
 		
-		btnNewButton_1 = new JButton("Remove Pet");
-		btnNewButton_1.setBounds(6, 337, 100, 29);
-		panel.add(btnNewButton_1);
+		removeButton = new JButton("Remove Pet");
+		removeButton.setBounds(6, 337, 100, 29);
+		panel.add(removeButton);
 		
-		btnNewButton_2 = new JButton("Adopt Pet");
-		btnNewButton_2.setBounds(118, 337, 92, 29);
-		panel.add(btnNewButton_2);
+		adoptButton = new JButton("Adopt Pet");
+		adoptButton.setBounds(118, 337, 92, 29);
+		panel.add(adoptButton);
 		
-		btnNewButton_3 = new JButton("View Details");
-		btnNewButton_3.setBounds(222, 337, 108, 29);
-		panel.add(btnNewButton_3);
+		viewDetailsButton = new JButton("View Details");
+		viewDetailsButton.setBounds(222, 337, 108, 29);
+		panel.add(viewDetailsButton);
 		
-		btnNewButton_4 = new JButton("Save");
-		btnNewButton_4.setBounds(377, 337, 117, 29);
-		panel.add(btnNewButton_4);
+		saveButton = new JButton("Save");
+		saveButton.setBounds(377, 337, 117, 29);
+		panel.add(saveButton);
 		
 		JComboBox comboBox = new JComboBox();
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Name", "Species", "Age"}));
@@ -69,4 +70,13 @@ public class PetListView extends JFrame {
 	public DefaultListModel<Pet> getList() {
 		return (DefaultListModel<Pet>) list.getModel();
 	}
+	
+	public int getSelectedUser() {
+		return list.getSelectedIndex();
+	}
+
+	public void addActionListenerToRemovePetButton(ActionListener listener) {
+		removeButton.addActionListener(listener);
+	}
+	
 }

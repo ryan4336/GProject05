@@ -1,5 +1,7 @@
 package gproject05.PetController;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.util.List;
 
@@ -18,6 +20,7 @@ public class PetController {
 	public PetController(PetListView view, PetListModel model) throws FileNotFoundException {
 		this.petListView = view;
 		this.petListModel = model;
+		this.petListView.addActionListenerToRemovePetButton(new RemovePetButtonActionListener());
 		
 		//initialize shelter and import pets, send PetList to model and view
 		Shelter<Pet> shelter = initShelter();
@@ -44,6 +47,17 @@ public class PetController {
         return shelter;
 	}
 	
+	private class RemovePetButtonActionListener implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			int selectedUser = petListView.getSelectedUser();
+			petListView.getList().remove(selectedUser);
+			petListModel.getPetList().remove(selectedUser);
+			
+		}
+		
+	}
 	
 }
 
