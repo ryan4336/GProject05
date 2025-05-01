@@ -1,4 +1,4 @@
-package gproject05.model.pets;
+package gproject05.pets;
 
 public enum PetType {
 	DOG,

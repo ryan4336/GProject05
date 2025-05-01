@@ -1,14 +1,12 @@
-package gproject05.model.petloader;
+package gproject05.petloader;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import gproject05.model.pets.Cat;
-import gproject05.model.pets.Dog;
-
-import gproject05.model.pets.Pet;
-import gproject05.model.pets.Rabbit;
-
+import gproject05.pets.Cat;
+import gproject05.pets.Dog;
+import gproject05.pets.Pet;
+import gproject05.pets.Rabbit;
 
 import java.io.FileNotFoundException;
 

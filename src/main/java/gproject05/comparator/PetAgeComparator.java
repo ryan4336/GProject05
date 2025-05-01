@@ -1,8 +1,8 @@
-package gproject05.model.comparator;
+package gproject05.comparator;
 
 import java.util.Comparator;
 
-import gproject05.model.pets.Pet;
+import gproject05.pets.Pet;
 
 public class PetAgeComparator implements Comparator<Pet> {
 	

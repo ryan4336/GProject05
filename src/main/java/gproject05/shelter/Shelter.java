@@ -1,9 +1,9 @@
-package gproject05.model.shelter;
+package gproject05.shelter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import gproject05.model.pets.Pet;
+import gproject05.pets.Pet;
 
 public class Shelter<T extends Pet>{
 	private List<T> pets;

@@ -1,4 +1,4 @@
-package gproject05.model.petloader;
+package gproject05.petloader;
 
 public class ExoticAnimalJson {
 	

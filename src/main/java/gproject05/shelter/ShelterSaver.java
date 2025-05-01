@@ -1,4 +1,4 @@
-package gproject05.model.shelter;
+package gproject05.shelter;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -9,7 +9,7 @@ import java.util.List;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import gproject05.model.pets.Pet;
+import gproject05.pets.Pet;
 
 public class ShelterSaver {
 	

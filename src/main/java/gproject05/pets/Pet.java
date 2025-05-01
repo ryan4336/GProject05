@@ -1,4 +1,4 @@
-package gproject05.model.pets;
+package gproject05.pets;
 
 public abstract class Pet implements Comparable<Pet> {
 	protected int id;
