@@ -34,6 +34,7 @@ public class PetController {
 		
 		//initialize shelter and import pets, send PetList to model and view
 		Shelter<Pet> shelter = initShelter();
+		shelter.sortPetsDefault();
 		model.setPetList(shelter.getPetList());
 		for(Pet pet : shelter.getPetList()) {
 			view.getList().addElement(pet);

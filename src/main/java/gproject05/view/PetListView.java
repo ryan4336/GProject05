@@ -16,7 +16,7 @@ public class PetListView extends JFrame {
 	private JButton saveButton;
 	private JTextField txtSortBy;
 	private JButton addButton;
-	private JComboBox sortComboBox;
+	private JComboBox<String> sortComboBox;
 	
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
@@ -34,6 +34,7 @@ public class PetListView extends JFrame {
 		
 		list.setBounds(6, 6, 488, 288);
 		panel.add(list);
+		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		
 		addButton = new JButton("Add Pet");
 		addButton.setBounds(6, 306, 100, 29);

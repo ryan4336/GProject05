@@ -1,6 +1,7 @@
 package gproject05.shelter;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import gproject05.pets.Pet;
@@ -28,5 +29,9 @@ public class Shelter<T extends Pet>{
 
     public void adoptPet(T pet) {
         pet.setAdopted(true);
+    }
+    
+    public void sortPetsDefault() {
+    	Collections.sort(pets);
     }
 }
